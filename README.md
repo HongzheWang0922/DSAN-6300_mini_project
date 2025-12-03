@@ -4,7 +4,7 @@
 
 This project analyzes the U.S. Department of Transportation's Airline On-Time Performance dataset for **June 2018**. The analysis examines flight delays, cancellations, and operational patterns across 17 major U.S. airlines and hundreds of airports.
 
-**Live Website**: [Your GitHub Pages URL will go here]
+**Live Website**: https://hongzhewang0922.github.io/DSAN-6300_mini_project/
 
 ## Key Findings
 
