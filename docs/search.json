@@ -1,0 +1,177 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Airline On-Time Performance Analysis",
+    "section": "",
+    "text": "This analysis explores the U.S. Department of Transportation’s Airline On-Time Performance dataset for June 2018, examining over 626,000 flights across 17 major airlines. Our investigation reveals critical insights into flight delays, cancellations, and operational patterns that affect millions of passengers.\nKey Findings:\n\nSouthwest Airlines demonstrated exceptional operational efficiency with the lowest maximum delay (540 minutes)\nPago Pago Airport experienced the highest average departure delays (77.6 minutes)\nFriday was the busiest travel day with over 108,000 flights\n10,693 flights were cancelled, with weather and carrier issues as primary causes"
+  },
+  {
+    "objectID": "index.html#executive-summary",
+    "href": "index.html#executive-summary",
+    "title": "Airline On-Time Performance Analysis",
+    "section": "",
+    "text": "This analysis explores the U.S. Department of Transportation’s Airline On-Time Performance dataset for June 2018, examining over 626,000 flights across 17 major airlines. Our investigation reveals critical insights into flight delays, cancellations, and operational patterns that affect millions of passengers.\nKey Findings:\n\nSouthwest Airlines demonstrated exceptional operational efficiency with the lowest maximum delay (540 minutes)\nPago Pago Airport experienced the highest average departure delays (77.6 minutes)\nFriday was the busiest travel day with over 108,000 flights\n10,693 flights were cancelled, with weather and carrier issues as primary causes"
+  },
+  {
+    "objectID": "index.html#maximum-departure-delays-by-airline",
+    "href": "index.html#maximum-departure-delays-by-airline",
+    "title": "Airline On-Time Performance Analysis",
+    "section": "1. Maximum Departure Delays by Airline",
+    "text": "1. Maximum Departure Delays by Airline\n\nAnalysis\nUnderstanding which airlines experience the most severe delays helps travelers make informed booking decisions. This analysis identifies the maximum single departure delay experienced by each airline during June 2018.\n\n\nCode\nlibrary(tidyverse)\nlibrary(scales)\nlibrary(plotly)\nlibrary(knitr)\nlibrary(DT)\n\n# Read data\nq1_data &lt;- read_csv(\"miniproj_Hongzhe_Wang_hw530_question1.csv\")\n\n# Clean the airline names\nq1_data &lt;- q1_data %&gt;%\n  mutate(Airline_Name = str_trim(gsub(\"\\t\", \"\", Airline_Name)))\n\n# Display table\ndatatable(q1_data, \n          options = list(pageLength = 10, dom = 'tip'),\n          caption = \"Maximum Departure Delays by Airline\")\n\n\n\n\n\n\n\n\nVisualization\n\n\nCode\n# Create interactive bar chart\np1 &lt;- ggplot(q1_data, aes(x = reorder(Airline_Name, Max_Departure_Delay_Minutes), \n                          y = Max_Departure_Delay_Minutes,\n                          fill = Max_Departure_Delay_Minutes,\n                          text = paste(\"Airline:\", Airline_Name, \"&lt;br&gt;\",\n                                      \"Max Delay:\", Max_Departure_Delay_Minutes, \"minutes\"))) +\n  geom_col() +\n  coord_flip() +\n  scale_fill_gradient(low = \"#2E7D32\", high = \"#C62828\", guide = \"none\") +\n  labs(title = \"Maximum Departure Delays by Airline (June 2018)\",\n       subtitle = \"Southwest Airlines shows the best performance with lowest maximum delay\",\n       x = \"\",\n       y = \"Maximum Delay (minutes)\") +\n  theme_minimal() +\n  theme(plot.title = element_text(face = \"bold\", size = 14),\n        axis.text.y = element_text(size = 9))\n\nggplotly(p1, tooltip = \"text\")\n\n\n\n\n\n\n\n\nInsights\n\nSouthwest Airlines leads in reliability with only 540 minutes maximum delay, nearly 3x better than the worst performer\nSkyWest Airlines had the longest single delay at 1,822 minutes (over 30 hours)\nThere’s a 238% variation between best and worst performers\nLow-cost carriers (Southwest, JetBlue, Alaska) generally show better delay management"
+  },
+  {
+    "objectID": "index.html#maximum-early-departures-by-airline",
+    "href": "index.html#maximum-early-departures-by-airline",
+    "title": "Airline On-Time Performance Analysis",
+    "section": "2. Maximum Early Departures by Airline",
+    "text": "2. Maximum Early Departures by Airline\n\nAnalysis\nWhile delays get most attention, early departures can also inconvenience passengers who arrive at the scheduled time. This metric shows how much earlier than scheduled airlines departed in their most extreme cases.\n\n\nCode\nq2_data &lt;- read_csv(\"miniproj_Hongzhe_Wang_hw530_question2.csv\")\nq2_data &lt;- q2_data %&gt;%\n  mutate(Airline_Name = str_trim(gsub(\"\\t\", \"\", Airline_Name)),\n         Max_Early_Departure_Minutes = abs(Max_Early_Departure_Minutes))\n\ndatatable(q2_data, \n          options = list(pageLength = 10, dom = 'tip'),\n          caption = \"Maximum Early Departures by Airline (in minutes)\")\n\n\n\n\n\n\n\n\nVisualization\n\n\nCode\np2 &lt;- ggplot(q2_data, aes(x = reorder(Airline_Name, -Max_Early_Departure_Minutes), \n                          y = Max_Early_Departure_Minutes,\n                          fill = Max_Early_Departure_Minutes,\n                          text = paste(\"Airline:\", Airline_Name, \"&lt;br&gt;\",\n                                      \"Early by:\", Max_Early_Departure_Minutes, \"minutes\"))) +\n  geom_col() +\n  coord_flip() +\n  scale_fill_gradient(low = \"#1976D2\", high = \"#E65100\", guide = \"none\") +\n  labs(title = \"Maximum Early Departures by Airline (June 2018)\",\n       subtitle = \"Allegiant Air and Southwest had the earliest departures\",\n       x = \"\",\n       y = \"Early Departure (minutes)\") +\n  theme_minimal() +\n  theme(plot.title = element_text(face = \"bold\", size = 14),\n        axis.text.y = element_text(size = 9))\n\nggplotly(p2, tooltip = \"text\")\n\n\n\n\n\n\n\n\nInsights\n\nAllegiant Air departed 53 minutes early in its most extreme case\nUnited Airlines shows best consistency with only 21 minutes maximum early departure\nEarly departures create missed flight risks for passengers who plan arrival around scheduled time\nThe 32-minute range across airlines suggests varying operational philosophies"
+  },
+  {
+    "objectID": "index.html#flight-volume-by-day-of-week",
+    "href": "index.html#flight-volume-by-day-of-week",
+    "title": "Airline On-Time Performance Analysis",
+    "section": "3. Flight Volume by Day of Week",
+    "text": "3. Flight Volume by Day of Week\n\nAnalysis\nUnderstanding weekly flight patterns helps identify peak travel days and potential capacity constraints. This analysis ranks each day by total flights operated.\n\n\nCode\nq3_data &lt;- read_csv(\"miniproj_Hongzhe_Wang_hw530_question3.csv\")\n\n# Reorder days properly\nq3_data$Day_of_Week &lt;- factor(q3_data$Day_of_Week, \n                              levels = c(\"Monday\", \"Tuesday\", \"Wednesday\", \n                                       \"Thursday\", \"Friday\", \"Saturday\", \"Sunday\"))\n\ndatatable(q3_data, \n          options = list(pageLength = 10, dom = 't'),\n          caption = \"Flight Volume by Day of Week (Ranked)\")\n\n\n\n\n\n\n\n\nVisualization\n\n\nCode\np3 &lt;- ggplot(q3_data, aes(x = Day_of_Week, \n                          y = Number_of_Flights,\n                          fill = Day_Rank,\n                          text = paste(\"Day:\", Day_of_Week, \"&lt;br&gt;\",\n                                      \"Flights:\", format(Number_of_Flights, big.mark=\",\"), \"&lt;br&gt;\",\n                                      \"Rank:\", Day_Rank))) +\n  geom_col() +\n  geom_text(aes(label = format(Number_of_Flights, big.mark=\",\")), \n            vjust = -0.5, size = 3.5) +\n  scale_fill_gradient(low = \"#4CAF50\", high = \"#FFC107\") +\n  labs(title = \"Daily Flight Volume Distribution (June 2018)\",\n       subtitle = \"Friday leads with 108K flights; Sunday sees lowest traffic\",\n       x = \"Day of Week\",\n       y = \"Number of Flights\",\n       fill = \"Rank\") +\n  theme_minimal() +\n  theme(plot.title = element_text(face = \"bold\", size = 14),\n        axis.text.x = element_text(angle = 45, hjust = 1))\n\nggplotly(p3, tooltip = \"text\")\n\n\n\n\n\n\n\n\nInsights\n\nFriday dominates with 108,359 flights, marking peak business and leisure travel\nWeekend pattern: Saturday drops to 91K flights, Sunday lowest at 83K\n30% volume difference between busiest (Friday) and quietest (Sunday) days\nMid-week days (Tue-Thu) show consistent volume around 85-87K flights\nPattern reflects business travel peaks at week’s end and leisure travel on Fridays"
+  },
+  {
+    "objectID": "index.html#airport-with-highest-average-departure-delay",
+    "href": "index.html#airport-with-highest-average-departure-delay",
+    "title": "Airline On-Time Performance Analysis",
+    "section": "4. Airport with Highest Average Departure Delay",
+    "text": "4. Airport with Highest Average Departure Delay\n\nAnalysis\nIdentifying airports with chronic delay problems helps travelers plan connections and airlines optimize operations.\n\n\nCode\nq4_data &lt;- read_csv(\"miniproj_Hongzhe_Wang_hw530_question4.csv\")\n\nkable(q4_data, \n      caption = \"Airport with Highest Average Departure Delay\",\n      col.names = c(\"Airport Name\", \"Airport Code\", \"Avg Delay (minutes)\"),\n      digits = 2)\n\n\n\nAirport with Highest Average Departure Delay\n\n\nAirport Name\nAirport Code\nAvg Delay (minutes)\n\n\n\n\nPago Pago\nPPG\n77.62\n\n\n\n\n\n\n\nContext & Insights\nPago Pago International Airport (PPG) in American Samoa shows an average departure delay of 77.6 minutes - more than an hour beyond scheduled departure times.\nWhy this matters:\n\nRemote location: PPG serves as a critical Pacific hub with limited infrastructure\nWeather patterns: Tropical weather can cause significant operational challenges\n\nLimited alternatives: Few rerouting options when delays occur\nSample size consideration: Fewer flights mean each delay has larger statistical impact\n\nFor travelers: - Always book longer connections through PPG - Consider travel insurance for PPG itineraries - Monitor weather forecasts before departure"
+  },
+  {
+    "objectID": "index.html#airlines-worst-performing-airports",
+    "href": "index.html#airlines-worst-performing-airports",
+    "title": "Airline On-Time Performance Analysis",
+    "section": "5. Airlines’ Worst-Performing Airports",
+    "text": "5. Airlines’ Worst-Performing Airports\n\nAnalysis\nEach airline has airports where operational challenges create above-average delays. Understanding these pain points reveals network vulnerabilities.\n\n\nCode\nq5_data &lt;- read_csv(\"miniproj_Hongzhe_Wang_hw530_question5.csv\")\nq5_data &lt;- q5_data %&gt;%\n  mutate(Airline_Name = str_trim(gsub(\"\\t\", \"\", Airline_Name)))\n\ndatatable(q5_data, \n          options = list(pageLength = 17, dom = 'tip'),\n          caption = \"Each Airline's Highest Average Delay Airport\",\n          colnames = c(\"Airline\", \"Airport\", \"Avg Delay (min)\"))\n\n\n\n\n\n\n\n\nVisualization\n\n\nCode\np5 &lt;- ggplot(q5_data, aes(x = reorder(Airline_Name, Highest_Avg_Departure_Delay), \n                          y = Highest_Avg_Departure_Delay,\n                          fill = Highest_Avg_Departure_Delay,\n                          text = paste(\"Airline:\", Airline_Name, \"&lt;br&gt;\",\n                                      \"Airport:\", Airport_Name, \"&lt;br&gt;\",\n                                      \"Avg Delay:\", round(Highest_Avg_Departure_Delay, 1), \"min\"))) +\n  geom_col() +\n  coord_flip() +\n  scale_fill_gradient2(low = \"#4CAF50\", mid = \"#FFC107\", high = \"#D32F2F\", \n                       midpoint = 60, guide = \"none\") +\n  geom_hline(yintercept = 60, linetype = \"dashed\", color = \"red\", alpha = 0.5) +\n  labs(title = \"Each Airline's Most Problematic Airport (June 2018)\",\n       subtitle = \"Endeavor Air at Mobile shows worst performance (120 min avg delay)\",\n       x = \"\",\n       y = \"Average Departure Delay (minutes)\") +\n  theme_minimal() +\n  theme(plot.title = element_text(face = \"bold\", size = 13),\n        axis.text.y = element_text(size = 8))\n\nggplotly(p5, tooltip = \"text\")\n\n\n\n\n\n\n\n\nKey Insights\n\nEndeavor Air at Mobile, AL: Worst performer at 120 minutes average delay\nMesa Airlines at Syracuse, NY: Second worst at 105 minutes\nRegional airports dominate the problem list, suggesting infrastructure constraints\nSouthwest at Greer, SC: Best of the worst at only 28 minutes\n8x variation between best and worst airline-airport combinations\n\nPattern analysis: - Smaller regional airports face greater operational challenges - Weather-prone locations (Syracuse snow, Mobile storms) appear frequently - Limited staffing and equipment at regional airports compound delays"
+  },
+  {
+    "objectID": "index.html#flight-cancellations-analysis",
+    "href": "index.html#flight-cancellations-analysis",
+    "title": "Airline On-Time Performance Analysis",
+    "section": "6. Flight Cancellations Analysis",
+    "text": "6. Flight Cancellations Analysis\n\n6a. Overall Cancellation Count\n\n\nCode\nq6a_data &lt;- read_csv(\"miniproj_Hongzhe_Wang_hw530_question6a.csv\")\n\nkable(q6a_data, \n      caption = \"Total Cancelled Flights in June 2018\",\n      col.names = \"Cancelled Flights\",\n      format.args = list(big.mark = \",\"))\n\n\n\nTotal Cancelled Flights in June 2018\n\n\nCancelled Flights\n\n\n\n\n10,693\n\n\n\n\n\nImpact Assessment:\n\n10,693 cancelled flights out of approximately 626,217 total flights\nRepresents ~1.7% cancellation rate\nAffects an estimated 1-2 million passengers (assuming 100-200 passengers per flight)\n\n\n\n6b. Cancellation Reasons by Airport\n\n\nCode\nq6b_data &lt;- read_csv(\"miniproj_Hongzhe_Wang_hw530_question6b.csv\")\n\n# Show top 20 airports by cancellation count\nq6b_top &lt;- q6b_data %&gt;%\n  arrange(desc(Cancellation_Count)) %&gt;%\n  head(20)\n\ndatatable(q6b_top, \n          options = list(pageLength = 10, dom = 'tip'),\n          caption = \"Top 20 Airports by Cancellation Count\",\n          colnames = c(\"Airport\", \"Primary Reason\", \"Count\"))\n\n\n\n\n\n\n\n\nVisualization: Cancellation Reasons\n\n\nCode\np6b &lt;- ggplot(q6b_top, aes(x = reorder(Airport_Name, Cancellation_Count), \n                           y = Cancellation_Count,\n                           fill = Most_Frequent_Reason,\n                           text = paste(\"Airport:\", Airport_Name, \"&lt;br&gt;\",\n                                       \"Reason:\", Most_Frequent_Reason, \"&lt;br&gt;\",\n                                       \"Cancellations:\", Cancellation_Count))) +\n  geom_col() +\n  coord_flip() +\n  scale_fill_brewer(palette = \"Set2\") +\n  labs(title = \"Top 20 Airports by Flight Cancellations (June 2018)\",\n       subtitle = \"Dallas/Fort Worth leads with 1,108 carrier-related cancellations\",\n       x = \"\",\n       y = \"Number of Cancellations\",\n       fill = \"Primary Reason\") +\n  theme_minimal() +\n  theme(plot.title = element_text(face = \"bold\", size = 13),\n        axis.text.y = element_text(size = 9))\n\nggplotly(p6b, tooltip = \"text\")\n\n\n\n\n\n\n\n\nCancellation Reason Distribution\n\n\nCode\nreason_summary &lt;- q6b_data %&gt;%\n  group_by(Most_Frequent_Reason) %&gt;%\n  summarize(Total = sum(Cancellation_Count)) %&gt;%\n  arrange(desc(Total)) %&gt;%\n  mutate(Percentage = round(Total/sum(Total)*100, 1),\n         Label = paste0(Most_Frequent_Reason, \"\\n\", \n                       format(Total, big.mark=\",\"), \" (\", \n                       Percentage, \"%)\"))\n\n# Use a bar chart instead of pie chart for better plotly compatibility\np6b2 &lt;- ggplot(reason_summary, aes(x = reorder(Most_Frequent_Reason, Total), \n                                   y = Total,\n                                   fill = Most_Frequent_Reason,\n                                   text = paste(\"Reason:\", Most_Frequent_Reason, \"&lt;br&gt;\",\n                                               \"Cancellations:\", format(Total, big.mark=\",\"), \"&lt;br&gt;\",\n                                               \"Percentage:\", Percentage, \"%\"))) +\n  geom_col() +\n  geom_text(aes(label = paste0(format(Total, big.mark=\",\"), \"\\n(\", Percentage, \"%)\")), \n            hjust = -0.1, size = 4) +\n  coord_flip() +\n  scale_fill_brewer(palette = \"Set3\") +\n  scale_y_continuous(expand = expansion(mult = c(0, 0.15))) +\n  labs(title = \"Distribution of Cancellation Reasons\",\n       subtitle = \"Carrier issues are the dominant cause of flight cancellations\",\n       x = \"\",\n       y = \"Number of Cancellations\") +\n  theme_minimal() +\n  theme(plot.title = element_text(face = \"bold\", size = 14),\n        legend.position = \"none\")\n\n# Display as static ggplot (pie charts don't work well with plotly)\np6b2\n\n\n\n\n\n\n\n\n\n\n\nKey Insights\n\nDallas/Fort Worth (DFW) experienced 1,108 cancellations - all carrier-related\nCarrier issues dominate as cancellation cause, suggesting operational/mechanical problems\nBaltimore had 116 National Air System cancellations (air traffic control, airport operations)\nWeather impacts certain locations more (e.g., Midwest, Northeast airports)\n\nCancellation categories:\n\nCarrier: Mechanical issues, crew problems, baggage handling\nWeather: Storms, fog, snow, wind\nNational Air System: ATC delays, airport operations, security\nSecurity: Relatively rare in this dataset"
+  },
+  {
+    "objectID": "index.html#rolling-average-flight-volume",
+    "href": "index.html#rolling-average-flight-volume",
+    "title": "Airline On-Time Performance Analysis",
+    "section": "7. Rolling Average Flight Volume",
+    "text": "7. Rolling Average Flight Volume\n\nAnalysis\nThis metric shows the 3-day rolling average of flights, helping identify trends and patterns throughout the month that single-day data might obscure.\n\n\nCode\nq7_data &lt;- read_csv(\"miniproj_Hongzhe_Wang_hw530_question7.csv\")\n\n# Clean the data - remove the duplicate header row and convert to proper types\nq7_data &lt;- q7_data %&gt;%\n  filter(FlightDate != \"FlightDate\") %&gt;%\n  mutate(FlightDate = as.Date(FlightDate),\n         Avg_Flights_Preceding_3_Days = as.numeric(Avg_Flights_Preceding_3_Days))\n\ndatatable(q7_data, \n          options = list(pageLength = 10, dom = 'tip'),\n          caption = \"3-Day Rolling Average of Daily Flights\",\n          colnames = c(\"Date\", \"3-Day Avg Flights\"))\n\n\n\n\n\n\n\n\nVisualization\n\n\nCode\np7 &lt;- ggplot(q7_data, aes(x = FlightDate, \n                          y = Avg_Flights_Preceding_3_Days,\n                          text = paste(\"Date:\", format(FlightDate, \"%B %d, %Y\"), \"&lt;br&gt;\",\n                                      \"3-Day Avg:\", format(round(Avg_Flights_Preceding_3_Days), big.mark=\",\")))) +\n  geom_line(color = \"#1976D2\", size = 1) +\n  geom_point(color = \"#1976D2\", size = 2) +\n  geom_smooth(method = \"loess\", se = TRUE, color = \"#D32F2F\", linetype = \"dashed\") +\n  scale_y_continuous(labels = comma) +\n  scale_x_date(date_breaks = \"2 days\", date_labels = \"%b %d\") +\n  labs(title = \"3-Day Rolling Average of Daily Flights (June 2018)\",\n       subtitle = \"Flight volume shows weekly cyclical pattern with weekend dips\",\n       x = \"Date\",\n       y = \"Average Number of Flights (3-Day Window)\") +\n  theme_minimal() +\n  theme(plot.title = element_text(face = \"bold\", size = 13),\n        axis.text.x = element_text(angle = 45, hjust = 1))\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\nCode\nggplotly(p7, tooltip = \"text\")\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning: Removed 1 row containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\n\n\n\n\n\n\nInsights\n\nClear weekly pattern: Peaks on Fridays (21,000+ flights), drops on Sundays (18,000-19,000 flights)\nStable mid-month: June 13-23 shows consistent high volume around 21,500 flights\nGradual increase: Volume trends upward through the month toward peak summer travel season\nRolling average smooths daily volatility, revealing underlying patterns\n\nOperational implications:\n\nAirlines can anticipate capacity needs based on day-of-week patterns\nStaffing optimization: Higher crews needed Thu-Sat, reduced Sun-Mon\nPrice dynamics: Premium pricing justified on high-demand days (Thu-Fri)"
+  },
+  {
+    "objectID": "index.html#overall-conclusions",
+    "href": "index.html#overall-conclusions",
+    "title": "Airline On-Time Performance Analysis",
+    "section": "Overall Conclusions",
+    "text": "Overall Conclusions\n\nKey Takeaways\n\nAirline Reliability Varies Significantly\n\nSouthwest, Alaska, and JetBlue demonstrate superior operational control\nRegional carriers face greater delay challenges\n3x difference between best and worst performers in maximum delays\n\nGeographic Patterns Matter\n\nRemote locations (Pago Pago) and regional airports face structural challenges\nWeather-prone regions show higher cancellation rates\nHub airports generally manage delays better than spoke airports\n\nTemporal Patterns Are Predictable\n\nFriday dominates with 30% more flights than Sunday\nWeekly cycles are consistent and actionable for planning\nMid-month stability suggests successful capacity management\n\nCancellation Strategy Varies\n\nCarrier-related issues dominate (mechanical, crew)\nWeather and NAS factors show geographic concentration\n1.7% overall cancellation rate affects millions of passengers\n\n\n\n\nRecommendations\nFor Travelers:\n\nChoose Southwest, Alaska, or JetBlue for better reliability\nAvoid tight connections at regional airports\nBook Friday flights early; prices premium but availability critical\nAllow extra time at historically delayed airports (PPG, DFW)\n\nFor Airlines:\n\nInvest in regional airport infrastructure and staffing\nFocus maintenance resources on preventing carrier cancellations\nOptimize crew scheduling for Friday peak demand\nDevelop weather contingency plans for vulnerable airports\n\nFor Industry:\n\nAddress National Air System constraints at major hubs\nImprove regional airport capabilities\nEnhance passenger communication during disruptions\nConsider demand management on peak days"
+  },
+  {
+    "objectID": "index.html#data-methodology",
+    "href": "index.html#data-methodology",
+    "title": "Airline On-Time Performance Analysis",
+    "section": "Data & Methodology",
+    "text": "Data & Methodology\nDataset: U.S. DOT Airline On-Time Performance\nPeriod: June 2018\nTotal Flights: ~626,217\nAirlines Analyzed: 17 major U.S. carriers\nAirports: 296 departure airports tracked\nTools Used:\n\nDatabase: MySQL (AWS RDS)\nAnalysis: R with tidyverse, ggplot2\nVisualization: Plotly for interactivity\nPublishing: Quarto + GitHub Pages\n\nSQL Queries performed all data aggregation and filtering. R was used exclusively for visualization and presentation."
+  },
+  {
+    "objectID": "index.html#appendix-technical-notes",
+    "href": "index.html#appendix-technical-notes",
+    "title": "Airline On-Time Performance Analysis",
+    "section": "Appendix: Technical Notes",
+    "text": "Appendix: Technical Notes\n\nData Quality Considerations\n\nEarly departures recorded as negative delay values\nCancellations excluded from delay calculations\nRolling averages use preceding 3 days (first date shows NA)\nAirport names standardized from FAA codes\n\n\n\nQuery Approach\nEach question required different SQL techniques:\n\nQ1-2: Simple GROUP BY with MAX aggregation\nQ3: Ranking with window functions\nQ4-5: Multiple joins between fact and dimension tables\nQ6: Filtering for cancelled flights with join on cancellation codes\nQ7: Window functions for rolling calculations\n\n\n\nVisualization Philosophy\nAll charts prioritize:\n\nClarity: Clean design without chart junk\nInteractivity: Hover details for deeper exploration\n\nContext: Annotations and subtitles explain significance\nColor: Meaningful gradients showing severity/rank\n\n\nAnalysis completed as part of Database Management Systems coursework\nFor questions or collaboration: hw530@georgetown.edu"
+  },
+  {
+    "objectID": "DEPLOYMENT.html",
+    "href": "DEPLOYMENT.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "DEPLOYMENT.html#前提条件",
+    "href": "DEPLOYMENT.html#前提条件",
+    "title": "",
+    "section": "前提条件",
+    "text": "前提条件\n\n已安装 Quarto: https://quarto.org/docs/get-started/\n已安装 R 和必要的包\n有 GitHub 账号"
+  },
+  {
+    "objectID": "DEPLOYMENT.html#步骤-1-准备文件",
+    "href": "DEPLOYMENT.html#步骤-1-准备文件",
+    "title": "",
+    "section": "步骤 1: 准备文件",
+    "text": "步骤 1: 准备文件\n\n将所有文件放在一个文件夹中：\n\nindex.qmd\n_quarto.yml\nstyles.css\n.nojekyll\nREADME.md\n所有的 miniproj_*.csv 文件"
+  },
+  {
+    "objectID": "DEPLOYMENT.html#步骤-2-安装-r-包",
+    "href": "DEPLOYMENT.html#步骤-2-安装-r-包",
+    "title": "",
+    "section": "步骤 2: 安装 R 包",
+    "text": "步骤 2: 安装 R 包\n打开 R 或 RStudio，运行：\ninstall.packages(c(\"tidyverse\", \"plotly\", \"DT\", \"scales\", \"knitr\"))"
+  },
+  {
+    "objectID": "DEPLOYMENT.html#步骤-3-渲染-quarto-网站",
+    "href": "DEPLOYMENT.html#步骤-3-渲染-quarto-网站",
+    "title": "",
+    "section": "步骤 3: 渲染 Quarto 网站",
+    "text": "步骤 3: 渲染 Quarto 网站\n在项目文件夹中打开终端/命令提示符，运行：\nquarto render\n这会创建一个 docs 文件夹，里面包含你的网站文件。"
+  },
+  {
+    "objectID": "DEPLOYMENT.html#步骤-4-创建-github-仓库",
+    "href": "DEPLOYMENT.html#步骤-4-创建-github-仓库",
+    "title": "",
+    "section": "步骤 4: 创建 GitHub 仓库",
+    "text": "步骤 4: 创建 GitHub 仓库\n\n登录 GitHub\n点击右上角的 “+” -&gt; “New repository”\n给仓库命名，例如：faa-flight-analysis\n选择 “Public”（必须是公开的才能用免费的 GitHub Pages）\n不要勾选 “Initialize this repository with a README”\n点击 “Create repository”"
+  },
+  {
+    "objectID": "DEPLOYMENT.html#步骤-5-上传文件到-github",
+    "href": "DEPLOYMENT.html#步骤-5-上传文件到-github",
+    "title": "",
+    "section": "步骤 5: 上传文件到 GitHub",
+    "text": "步骤 5: 上传文件到 GitHub\n在你的项目文件夹中打开终端/命令提示符，运行以下命令：\n# 初始化 git 仓库\ngit init\n\n# 添加所有文件\ngit add .\n\n# 创建第一次提交\ngit commit -m \"Initial commit: FAA flight analysis\"\n\n# 连接到你的 GitHub 仓库（替换 YOUR-USERNAME 和 YOUR-REPO-NAME）\ngit remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git\n\n# 推送到 GitHub\ngit branch -M main\ngit push -u origin main"
+  },
+  {
+    "objectID": "DEPLOYMENT.html#步骤-6-启用-github-pages",
+    "href": "DEPLOYMENT.html#步骤-6-启用-github-pages",
+    "title": "",
+    "section": "步骤 6: 启用 GitHub Pages",
+    "text": "步骤 6: 启用 GitHub Pages\n\n在 GitHub 上打开你的仓库\n点击 “Settings”（设置）\n在左侧菜单中找到 “Pages”\n在 “Build and deployment” 下：\n\nSource: 选择 “Deploy from a branch”\nBranch: 选择 “main”\nFolder: 选择 “/docs”\n\n点击 “Save”"
+  },
+  {
+    "objectID": "DEPLOYMENT.html#步骤-7-等待部署完成",
+    "href": "DEPLOYMENT.html#步骤-7-等待部署完成",
+    "title": "",
+    "section": "步骤 7: 等待部署完成",
+    "text": "步骤 7: 等待部署完成\n\nGitHub 会自动构建和部署你的网站\n这可能需要几分钟\n完成后，你会在 Pages 设置页面看到一个绿色的链接\n链接格式：https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/"
+  },
+  {
+    "objectID": "DEPLOYMENT.html#步骤-8-更新-readme",
+    "href": "DEPLOYMENT.html#步骤-8-更新-readme",
+    "title": "",
+    "section": "步骤 8: 更新 README",
+    "text": "步骤 8: 更新 README\n在 README.md 中，将 “Your GitHub Pages URL will go here” 替换为你的实际网址。\n然后推送更新：\ngit add README.md\ngit commit -m \"Update README with live site URL\"\ngit push"
+  },
+  {
+    "objectID": "DEPLOYMENT.html#故障排除",
+    "href": "DEPLOYMENT.html#故障排除",
+    "title": "",
+    "section": "故障排除",
+    "text": "故障排除\n\n如果网站显示不正确：\n\n检查 docs 文件夹是否已创建且包含 index.html\n确保 .nojekyll 文件在根目录\n在 GitHub Pages 设置中确认选择了 /docs 文件夹\n清除浏览器缓存后重新访问\n\n\n\n如果 R 图表不显示：\n\n确保所有 R 包都已安装\n检查 CSV 文件路径是否正确\n在本地先测试：quarto preview index.qmd\n\n\n\n如果遇到 Git 错误：\n如果你在推送时遇到身份验证问题，你可能需要： 1. 使用 Personal Access Token (PAT) 而不是密码 2. 在 GitHub 设置中创建 PAT：Settings -&gt; Developer settings -&gt; Personal access tokens 3. 使用 PAT 作为密码"
+  },
+  {
+    "objectID": "DEPLOYMENT.html#更新网站",
+    "href": "DEPLOYMENT.html#更新网站",
+    "title": "",
+    "section": "更新网站",
+    "text": "更新网站\n每次修改后：\n# 渲染新版本\nquarto render\n\n# 提交并推送更改\ngit add .\ngit commit -m \"Update analysis\"\ngit push\nGitHub Pages 会自动更新网站（可能需要几分钟）。"
+  },
+  {
+    "objectID": "DEPLOYMENT.html#需要帮助",
+    "href": "DEPLOYMENT.html#需要帮助",
+    "title": "",
+    "section": "需要帮助？",
+    "text": "需要帮助？\n\nQuarto 文档：https://quarto.org/docs/websites/\nGitHub Pages 文档：https://docs.github.com/en/pages\n如果有问题，可以在仓库中创建 Issue"
+  }
+]

@@ -1,0 +1,296 @@
+Airport_Name,Most_Frequent_Reason,Cancellation_Count
+Abilene,Weather,2
+Akron,Carrier,27
+Albany,Weather,2
+Albany,Carrier,9
+Albuquerque,Weather,7
+Allentown/Bethlehem/Easton,Carrier,13
+Amarillo,Carrier,8
+Anchorage,Carrier,9
+Appleton,"National Air System",2
+Arcata/Eureka,Weather,1
+Asheville,Carrier,31
+Ashland,Carrier,9
+Aspen,Weather,1
+Aspen,"National Air System",1
+Atlanta,Carrier,104
+"Atlantic City","National Air System",1
+Augusta,Carrier,24
+Austin,Carrier,32
+Bakersfield,Weather,1
+Baltimore,"National Air System",116
+Bangor,Carrier,5
+Barrow,Carrier,1
+"Baton Rouge",Carrier,8
+"Beaumont/Port Arthur","National Air System",1
+Belleville,Carrier,2
+Bellingham,Carrier,4
+Bend/Redmond,Weather,1
+Bethel,Carrier,2
+Billings,Carrier,2
+Birmingham,Carrier,55
+Bismarck/Mandan,Carrier,2
+Bismarck/Mandan,Weather,2
+Bloomington/Normal,"National Air System",8
+Boise,Carrier,5
+Boston,Carrier,64
+Bozeman,Weather,1
+Branson,Carrier,1
+"Bristol/Johnson City/Kingsport",Carrier,16
+Brownsville,Carrier,2
+Brunswick,"National Air System",1
+Buffalo,"National Air System",22
+Burbank,Carrier,27
+Burlington,Carrier,15
+CONCORD,Carrier,3
+"Cape Girardeau","National Air System",1
+Casper,Weather,1
+"Cedar Rapids/Iowa City",Carrier,13
+"Cedar Rapids/Iowa City","National Air System",13
+Champaign/Urbana,"National Air System",9
+Charleston,Carrier,39
+Charleston/Dunbar,Carrier,20
+Charlotte,Carrier,1222
+Charlottesville,Carrier,17
+Chattanooga,Carrier,17
+Chicago,Weather,148
+Chicago,"National Air System",500
+Cincinnati,Carrier,75
+Clarksburg/Fairmont,Weather,2
+Cleveland,Carrier,60
+"College Station/Bryan",Carrier,2
+"Colorado Springs",Carrier,8
+Columbia,Carrier,42
+Columbia,"National Air System",2
+Columbia,Carrier,2
+Columbus,Carrier,42
+Columbus,Weather,2
+Columbus,Carrier,2
+"Corpus Christi",Carrier,9
+Dallas,Carrier,27
+"Dallas/Fort Worth",Carrier,258
+Dayton,Carrier,53
+"Daytona Beach",Carrier,16
+Denver,Weather,69
+"Des Moines",Carrier,25
+Detroit,Carrier,42
+Dothan,Weather,1
+Dubuque,"National Air System",7
+Duluth,Weather,4
+Durango,Carrier,5
+Eagle,Carrier,1
+"Eau Claire",Weather,1
+"El Paso",Carrier,12
+Eugene,Carrier,2
+Evansville,Carrier,9
+Fairbanks,Carrier,3
+Fargo,Weather,5
+Fayetteville,Carrier,24
+Fayetteville,Carrier,18
+Flint,"National Air System",8
+"Fort Lauderdale",Carrier,32
+"Fort Myers",Carrier,13
+"Fort Smith","National Air System",2
+"Fort Wayne",Carrier,8
+Fresno,Carrier,5
+Gainesville,Carrier,19
+"Garden City",Weather,2
+"Grand Forks",Carrier,1
+"Grand Rapids","National Air System",18
+"Green Bay","National Air System",9
+"Greensboro/High Point",Carrier,51
+Greenville,Carrier,18
+Greer,Carrier,48
+Gulfport/Biloxi,Carrier,10
+Hancock/Houghton,Weather,2
+"Harlingen/San Benito",Weather,3
+Harrisburg,Carrier,17
+Hartford,Carrier,30
+Hattiesburg/Laurel,"National Air System",1
+Hattiesburg/Laurel,Weather,1
+Hays,Weather,4
+Helena,Weather,1
+Honolulu,Carrier,13
+Houston,Carrier,33
+Houston,Carrier,45
+Huntsville,Carrier,20
+Indianapolis,Carrier,34
+Islip,Carrier,6
+Jackson,Weather,2
+Jackson/Vicksburg,Carrier,23
+Jacksonville,Carrier,30
+"Jacksonville/Camp Lejeune",Carrier,21
+Joplin,"National Air System",1
+Juneau,Carrier,2
+Kahului,Carrier,3
+Kalamazoo,"National Air System",7
+Kalispell,Carrier,1
+"Kansas City",Weather,20
+Ketchikan,Carrier,4
+"Key West",Weather,1
+"Key West",Carrier,1
+Killeen,Weather,1
+Killeen,"National Air System",1
+Knoxville,Carrier,37
+Kodiak,Weather,1
+Kona,Carrier,13
+Kotzebue,Weather,1
+Kotzebue,Carrier,1
+"La Crosse",Weather,6
+Lafayette,Carrier,2
+"Lake Charles",Weather,1
+"Lake Charles","National Air System",1
+Lansing,"National Air System",5
+Laredo,"National Air System",1
+"Las Vegas",Carrier,106
+Latrobe,Carrier,1
+"Lawton/Fort Sill",Carrier,1
+Lewisburg,Weather,1
+Lexington,Carrier,28
+Lihue,Carrier,6
+Lincoln,Weather,3
+"Little Rock",Carrier,17
+"Long Beach",Carrier,4
+Longview,Carrier,2
+"Los Angeles",Carrier,116
+Louisville,Carrier,43
+Lubbock,Carrier,8
+Lynchburg,Carrier,21
+Madison,Carrier,17
+Manchester,Carrier,15
+"Manhattan/Ft. Riley","National Air System",4
+Marquette,"National Air System",3
+Melbourne,Carrier,7
+Memphis,Carrier,28
+Meridian,"National Air System",2
+Miami,Weather,35
+Midland/Odessa,Weather,7
+Milwaukee,Carrier,35
+Minneapolis,Weather,18
+Mission/McAllen/Edinburg,Carrier,13
+Missoula,Carrier,2
+Mobile,Carrier,16
+Moline,"National Air System",6
+Monroe,Carrier,1
+Monroe,"National Air System",1
+Monterey,Carrier,4
+Montgomery,Carrier,18
+Montrose/Delta,Carrier,2
+Mosinee,"National Air System",6
+Muskegon,Weather,2
+"Myrtle Beach",Carrier,37
+Nantucket,"National Air System",2
+Nantucket,Weather,2
+Nantucket,Carrier,2
+Nashville,Carrier,30
+"New Bern/Morehead/Beaufort",Carrier,20
+"New Haven",Carrier,11
+"New Orleans",Carrier,32
+"New York","National Air System",45
+"New York","National Air System",125
+Newark,"National Air System",60
+Newburgh/Poughkeepsie,Carrier,3
+"Newport News/Williamsburg",Carrier,30
+Nome,Weather,1
+Nome,Carrier,1
+Norfolk,Carrier,51
+"North Bend/Coos Bay","National Air System",1
+Oakland,Carrier,50
+Ogdensburg,Carrier,4
+"Oklahoma City",Carrier,18
+Omaha,Carrier,24
+Ontario,Carrier,7
+Orlando,Carrier,53
+Paducah,Weather,3
+"Palm Springs",Weather,2
+"Panama City",Carrier,1
+"Panama City","National Air System",1
+Pensacola,Carrier,27
+Peoria,Carrier,9
+Philadelphia,Carrier,195
+Phoenix,Carrier,3
+Phoenix,Carrier,58
+Pittsburgh,Carrier,45
+Plattsburgh,Carrier,1
+Ponce,Weather,1
+Portland,Carrier,12
+Portland,Carrier,17
+Portsmouth,Weather,1
+Providence,Carrier,20
+Provo,Carrier,2
+"Punta Gorda",Carrier,5
+Quincy,Weather,4
+Raleigh/Durham,Carrier,49
+"Rapid City",Carrier,2
+Reno,Carrier,7
+Richmond,Carrier,28
+Roanoke,Carrier,2
+Rochester,"National Air System",11
+Rochester,Carrier,11
+Rochester,Weather,4
+Rochester,"National Air System",4
+"Rock Springs",Weather,1
+Rockford,Carrier,1
+Roswell,Carrier,2
+Sacramento,Carrier,7
+"Saginaw/Bay City/Midland",Weather,3
+Salina,Weather,2
+"Salt Lake City",Carrier,11
+"Salt Lake City",Weather,11
+"San Angelo",Carrier,1
+"San Antonio",Carrier,24
+"San Diego",Carrier,35
+"San Francisco",Carrier,80
+"San Jose",Carrier,32
+"San Juan",Carrier,12
+"San Luis Obispo",Carrier,2
+Sanford,Carrier,6
+"Santa Ana",Carrier,11
+"Santa Barbara",Weather,1
+"Santa Barbara","National Air System",1
+"Santa Barbara",Carrier,1
+"Santa Rosa",Weather,1
+Sarasota/Bradenton,Carrier,17
+Savannah,Carrier,42
+Scottsbluff,Weather,1
+Scranton/Wilkes-Barre,Carrier,15
+Seattle,Carrier,25
+Shreveport,Carrier,8
+"Sioux City","National Air System",4
+"Sioux Falls",Carrier,6
+Sitka,Carrier,4
+"South Bend","National Air System",5
+Spokane,Carrier,2
+Spokane,Weather,2
+Springfield,Weather,6
+Springfield,Weather,4
+"St. Louis",Carrier,39
+"St. Petersburg",Carrier,18
+"State College",Weather,1
+Staunton,"National Air System",2
+Stillwater,Carrier,1
+Stillwater,"National Air System",1
+Stockton,Carrier,3
+Syracuse,Carrier,25
+Tallahassee,Carrier,21
+Tampa,Weather,28
+Texarkana,Carrier,2
+Toledo,Carrier,9
+"Traverse City","National Air System",5
+Trenton,Carrier,4
+Tucson,Carrier,5
+Tulsa,Carrier,13
+Tyler,Weather,2
+Valdosta,Weather,1
+Valparaiso,Carrier,22
+Waco,"National Air System",2
+Washington,Carrier,224
+Washington,Carrier,71
+Waterloo,"National Air System",4
+"West Palm Beach/Palm Beach",Carrier,10
+"White Plains",Carrier,26
+Wichita,Carrier,6
+"Wichita Falls",Weather,1
+"Wichita Falls","National Air System",1
+Wilmington,Carrier,41
+Worcester,Carrier,3

@@ -1,0 +1,25 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "FAA Flight Data Analysis"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.html
+    right:
+      - icon: github
+        href: https://github.com/your-username/your-repo-name
+        aria-label: GitHub
+  page-footer:
+    left: "© 2024 Hongzhe Wang"
+    right: "Built with Quarto"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    code-fold: true
+    code-tools: true

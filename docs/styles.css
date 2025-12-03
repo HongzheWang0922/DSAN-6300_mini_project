@@ -1,0 +1,116 @@
+/* Custom CSS for FAA Flight Analysis Website */
+
+/* Improve readability */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* Style headers */
+h1, h2, h3 {
+  color: #1976D2;
+  font-weight: 600;
+  margin-top: 1.5em;
+}
+
+h1 {
+  border-bottom: 3px solid #1976D2;
+  padding-bottom: 0.3em;
+}
+
+h2 {
+  border-bottom: 2px solid #E0E0E0;
+  padding-bottom: 0.2em;
+}
+
+/* Executive summary box */
+.executive-summary {
+  background-color: #E3F2FD;
+  border-left: 5px solid #1976D2;
+  padding: 1.5em;
+  margin: 1.5em 0;
+  border-radius: 5px;
+}
+
+/* Key findings boxes */
+.callout {
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 5px;
+  border-left: 5px solid;
+}
+
+.callout-note {
+  background-color: #E3F2FD;
+  border-color: #1976D2;
+}
+
+.callout-warning {
+  background-color: #FFF3E0;
+  border-color: #F57C00;
+}
+
+.callout-tip {
+  background-color: #E8F5E9;
+  border-color: #388E3C;
+}
+
+/* Table styling */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5em 0;
+}
+
+th {
+  background-color: #1976D2;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+tr:hover {
+  background-color: #F5F5F5;
+}
+
+/* Code blocks */
+pre {
+  background-color: #F5F5F5;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+/* Links */
+a {
+  color: #1976D2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Insights sections */
+.insights {
+  background-color: #F9FBE7;
+  padding: 1.5em;
+  margin: 1.5em 0;
+  border-radius: 5px;
+  border-left: 5px solid #827717;
+}
+
+/* Footer */
+.page-footer {
+  margin-top: 3em;
+  padding-top: 1em;
+  border-top: 2px solid #E0E0E0;
+  text-align: center;
+  color: #666;
+}
